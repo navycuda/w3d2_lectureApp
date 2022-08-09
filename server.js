@@ -31,7 +31,23 @@ app.get('/browse', (rx, tx) => {
   const templateVars = { starShips };
   tx.render('browse', templateVars);
 });
+
 /* Read */
+app.get('/read/:key', (rx, tx) => {
+  const key = rx.params.key;
+
+  if (starShips[key]) {
+
+    const templateVars = {
+      key,
+      value: starShips[key].answer
+    };
+    tx.render('read', templateVars);
+    return;
+  }
+  tx.send('Error');
+});
+
 /* Edit */
 /* Add */
 /* Delete */
