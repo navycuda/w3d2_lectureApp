@@ -21,10 +21,15 @@ const starShips = {
 /* Export Functions */
 /* Local Functions */
 /* Endpoints */
+app.get('/', (rx, tx) => {
+  tx.send('Hello World!');
+});
 
 /* Browse */
-app.get('browse', (request, response) => {
-  response.render('browse', { starShips });
+app.get('/browse', (rx, tx) => {
+  const dynamicContent = 'violin';
+  const templateVars = { starShips };
+  tx.render('browse', templateVars);
 });
 /* Read */
 /* Edit */
